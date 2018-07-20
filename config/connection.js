@@ -1,14 +1,21 @@
 var mysql = require('mysql');
 
-function login(){
-    return mysql.createConnection({
+var connection = mysql.createConnection({
         host: 'localhost',
         port: 3306,
         user: 'root',
         password: 'somepassword',
         database: 'burgers_db',
         multipleStatements: true
-    })
-}
+});
 
-module.exports = login;
+connection.connect(function(err){
+    if(err){
+        //console the cause of the error with err.stack
+        console.error("Connection Failed" + err.stack);
+        return;
+    }
+    console.log("Connection Successful! Id: " + connection.threadId);
+});
+
+module.exports = connection;
