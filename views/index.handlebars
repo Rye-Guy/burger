@@ -1,0 +1,37 @@
+<h1>Look at these burgers!</h1>
+<div class="col s6">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgersDisplay'> {{this.burger_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+</div>
+
+ <div class="col s6">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgersDevoured'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+</div>
+
+
+
+<h2>Have a burger you want to see on here? Please Input a name for the burger and we can add it to our list.</h2>
+
+<form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="newBurger" class="materialize-textarea" data-length="255"></textarea>
+            <label for="newBurger">New Burger Name</label>
+          </div>
+        </div>
+</form>
