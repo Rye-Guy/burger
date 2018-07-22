@@ -11,17 +11,25 @@ var orm = {
             res(result);
         });
     },
-    insert: function(value, res){
-        var query = "INSERT INTO burgers (burger_name) VALUES (" + value + ");"
-        
-        console.log(query);
+    insert: function(table, cols, vals, cb){
+        var queryString = "INSERT INTO " + table;
 
-        connection.query(query, function(err, result){
+        queryString += " ("; 
+        queryString += cols.toString();
+        queryString += ") "; 
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") "; 
+        
+        console.log(queryString);
+
+
+        connection.query(queryString, vals, function(err, result){
             if(err){
                 throw err;
             }
-            res(result);
-        })
+            cb(result);
+        });
      }
     // update: function(res){
     //     query = "UPDATE burgers SET burger"

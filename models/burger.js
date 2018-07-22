@@ -6,9 +6,9 @@ var burgers = {
             res(response);
         });
     },
-    insert: function(value, res){
-        orm.insert(value, res, function(response){
-            res(response);
+    insert: function(cols, vals, cb){
+        orm.insert('burgers', cols, vals, function(res){
+            cb(res);
         })
     }
 }

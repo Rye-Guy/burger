@@ -13,7 +13,7 @@ router.get('/', function(req, res){
 
 });
 
-router.post('/api/burgers', function(res, req){
+router.post('/api/burgers/', function(res, req){
     burgers.insert([
         'burger_name'
     ],[
