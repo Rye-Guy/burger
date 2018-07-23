@@ -13,7 +13,7 @@ router.get('/', function(req, res){
 
 });
 
-router.post('/api/burgers/', function(res, req){
+router.post('/api/burgers/', function(req, res){
     burgers.insert([
         'burger_name'
     ],[
@@ -26,7 +26,7 @@ router.post('/api/burgers/', function(res, req){
     }); 
 });
 
-router.put('/api/burgers/:id', function(res, req){
+router.put('/api/burgers/:id', function(req, res){
     var condition = 'id = ' + req.params.id;
     burger.update({
         devoured: true

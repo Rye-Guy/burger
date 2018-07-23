@@ -1,5 +1,17 @@
 var connection = require("./connection.js");
 
+//Function that builds the sql syntax
+function printQuestionMarks(num){
+    var arr = [];
+
+    for(var i = 0; i < num; i++){
+        arr.push("?");
+    }
+
+    return arr.toString();
+}
+
+
 var orm = {
     //function that selects everything from the burger table
     all: function(res){
