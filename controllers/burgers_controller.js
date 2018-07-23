@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 var burgers = require('../models/burger.js');
 
 router.get('/', function(req, res){
@@ -13,20 +14,20 @@ router.get('/', function(req, res){
 
 });
 
-router.post('/api/burgers/', function(req, res){
+router.post('/burgers', function(req, res){
     burgers.insert([
         'burger_name'
     ],[
-        req.body.name   
-    ], function(result){
-        console.log(result);
-        res.json(result);   
+        req.body.burger_name
+    ], function(data){
+        console.log(data);
+        res.json(data);   
         res.redirect('/');
        
     }); 
 });
 
-router.put('/api/burgers/:id', function(req, res){
+router.put('/burgers/:id', function(req, res){
     var condition = 'id = ' + req.params.id;
     burger.update({
         devoured: true

@@ -11,18 +11,29 @@ function printQuestionMarks(num){
     return arr.toString();
 }
 
+function objToSql(ob){
+    var arr = [];
+
+    for(var key in ob){
+        arr.push(key + '=' + ob[key]);
+    }
+
+    return arr.toString();
+}
+
 
 var orm = {
     //function that selects everything from the burger table
-    all: function(res){
-        var query = "SELECT * FROM burgers;"
+    all: function(tableInput, cb){
+        var query = "SELECT * FROM" + tableInput +  ";"
         connection.query(query, function(err, result){
             if(err){
                 throw err;
             }
-            res(result);
+            cb(result);
         });
     },
+
     insert: function(table, cols, vals, cb){
         var queryString = "INSERT INTO " + table;
 
@@ -42,10 +53,28 @@ var orm = {
             }
             cb(result);
         });
+     },
+     update: function(table, objColVals, condition, cb){
+         var queryString = "UPDATE " + table; 
+
+         queryString += " SET ";
+         queryString += objToSql(objColVals);
+         queryString += " WHERE "; 
+         queryString += condition;
+
+
+         console.log(queryString);
+
+         connection.query(queryString, function(err, result){
+             if(err){
+                 throw err; 
+             }
+
+             cb(result);
+         });
+
      }
-    // update: function(res){
-    //     query = "UPDATE burgers SET burger"
-    // }
+
 }
 
 module.exports = orm; 
