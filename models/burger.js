@@ -1,9 +1,9 @@
 var orm = require('../config/orm.js');
 
 var burgers = {
-    all: function(res){
-        orm.all(function(response){
-            res(response);
+    all: function(cb){
+        orm.all('burgers', function(res){
+            cb(res);
         });
     },
     insert: function(cols, vals, cb){
@@ -15,7 +15,6 @@ var burgers = {
         orm.update('burgers', ojbColVals, condition, function(res){
             cb(res);
         });
-
     }
 }
 

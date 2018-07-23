@@ -25,7 +25,7 @@ function objToSql(ob){
 var orm = {
     //function that selects everything from the burger table
     all: function(tableInput, cb){
-        var query = "SELECT * FROM" + tableInput +  ";"
+        var query = "SELECT * FROM " + tableInput +  ";"
         connection.query(query, function(err, result){
             if(err){
                 throw err;
