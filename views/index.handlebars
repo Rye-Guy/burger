@@ -1,4 +1,19 @@
 <h1>Look at these burgers!</h1>
+
+ <div class="col s6">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgersEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+</div>
+
+<h1>Devoured Burgers</h1>
+
 <div class="col s6">
         {{#each burgers}}
           {{#unless this.devoured}}
@@ -11,17 +26,7 @@
         {{/each}}
 </div>
 
- <div class="col s6">
-        {{#each burgers}}
-          {{#if this.devoured}}
-            <div class='burgersDevoured'>
-              <div>
-                {{this.burger_name}}
-              </div>
-            </div>
-          {{/if}}
-        {{/each}}
-</div>
+
 
 
 
