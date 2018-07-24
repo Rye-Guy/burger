@@ -35,6 +35,7 @@ var orm = {
     },
 
     insert: function(table, cols, vals, cb){
+        table = 'burger';
         var queryString = "INSERT INTO " + table;
 
         queryString += " ("; 
@@ -54,7 +55,9 @@ var orm = {
             cb(result);
         });
      },
+     
      update: function(table, objColVals, condition, cb){
+         table = 'burger';
          var queryString = "UPDATE " + table; 
 
          queryString += " SET ";
